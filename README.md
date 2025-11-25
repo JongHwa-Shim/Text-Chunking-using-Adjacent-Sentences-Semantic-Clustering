@@ -33,15 +33,14 @@ The federation is composed of the union of the 26 states and the Federal Distric
 ./data/corpus.txt --> Text data that needs to be chunked. Please the file contents with whatever you want.
 ./data/chunked_corpus.txt --> Chunking result of "./data/corpus.txt". 
 
-### Start - python installation
-Please install python version 3.10.
-
 ### Start - install packages, dependencies
-Please execute 
 ```
-installation.bat
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" # uv 설치안되어있다면 실행
+uv python list # 지원 가능한 파이썬 버전 확인
+uv python install 3.10.15 # 설치가 안되어 있으면 설치
+uv init --python=3.10.15
+uv sync
 ```
-in the command prompt (python 3.10 environment).
 
 ### One Click Execution - Execute python file main.py with default setting (Assume text is mainly in korean, use sentence transformer vectorizer).
 Please execute 
@@ -51,9 +50,12 @@ chunking.bat
 in command prompt (python 3.10 environment).
 
 ### User Customized Command
+You can choose splitter depend on text language and can adjust threshold for clustering strength.
 Please enter command 
 ```
-python main.py --splitter_name [SPLITTER NAME] --vectorizer_name [VECTORIZER NAME] --threshold [THRESHOLD]
+python main.py --splitter_name [SPLITTER NAME] --threshold [THRESHOLD]
+# [SPLITTER NAME]: 'spacy_senter'' is for english, 'kss' is for korean. 
+# [THRESHOLD]: Choose similarity threshold for adjacent sentences clustering. value is between 0~1. Higher threshold lead more scattered clusters.
 ```
 
 

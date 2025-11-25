@@ -18,7 +18,6 @@ dataclasses==0.8
 datasets==2.14.7
 dill==0.3.7
 emoji==1.2.0
-en-core-web-sm==3.5.0
 exceptiongroup==1.2.0
 filelock==3.13.1
 frozenlist==1.4.0
@@ -42,7 +41,7 @@ murmurhash==1.0.7
 networkx==3.2.1
 nltk==3.8.1
 numexpr==2.8.7
-numpy==1.26.0
+numpy==1.26.4
 packaging==23.1
 pandas==2.1.1
 pathy==0.10.1
@@ -81,8 +80,8 @@ thinc==8.1.10
 threadpoolctl==3.2.0
 tokenizers==0.13.3
 tomli==2.0.1
-torch==2.1.0
-torchvision==0.15.2a0
+torch==2.0.1
+torchvision==0.15.2
 tqdm==4.65.0
 transformers==4.28.1
 typer==0.4.1
