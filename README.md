@@ -1,12 +1,13 @@
 # Text Chunking using Adjacent Sentences Semantic Clustering (인접 문장 의미론적 군집화를 사용한 텍스트 청킹)
-
-- 인접 문장간의 유사도를 기반으로 군집화 → 각 군집을 chunk화
-- 유사도 계산을 위한 벡터화 모델로 Sentence Transformer를 사용하여 **폐쇄망에서도 구현가능**
-- 유사도 임계값 또는 chunk 크기 최소&최댓값을 조절하여 임의의 **chunking 환경 조절 가능**
-- **Pros:** 각 chunk의 콘텐츠 일관성, 유연한 chunk 크기, threshold 등 매개변수 조정 가능, 순서 보존
-- **Cons:** 방법이 다소 복잡, 처리시간 증가, chunk 크기의 균일성이 중요하다면 효과적이지 못함, 텍스트 컨텐츠의 구성이 매우 복잡하다면(문장, 단어 파편, 형식 부호 등이 뒤섞인) sentence transformer의 벡터화 성능이 하락할 수 있음
+- Address text chunks(adjacent sentences) as semantic clusters.
+- Clustering texts based on the similarity between adjacent sentences → each cluster becomes a text chunk.
+- Using the Sentence Transformer as a vectorization model for similarity calculation, **implementation possible even in closed networks**
+- Adjusting the similarity threshold or minimum and maximum chunk sizes allows arbitrary **chunking environment control**
+- **Pros:** Content consistency of each chunk, flexible chunk size, adjustable parameters such as threshold, order preservation
+- **Cons:** The method is somewhat complex, increases processing time, and is not effective if chunk size uniformity is important. If the text content is very complex (mixed with sentences, word fragments, and formatting symbols), the vectorization performance of the sentence transformer may degrade.
 
 ## Chunking Comparison
+- This program address text chunks as semantic clusters and can devide text more semantically appropriately.
 ### 1. Sample chunks from 'Langchain Splitter with Custom Parameters':
 
 ```
@@ -29,25 +30,25 @@ The federation is composed of the union of the 26 states and the Federal Distric
 
 ---
 ## Code Usage Guide
-### Data Pipeline
-./data/corpus.txt --> Text data that needs to be chunked. Please the file contents with whatever you want.
-./data/chunked_corpus.txt --> Chunking result of "./data/corpus.txt". 
-
 ### Start - install packages, dependencies
 ```
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" # uv 설치안되어있다면 실행
-uv python list # 지원 가능한 파이썬 버전 확인
-uv python install 3.10.15 # 설치가 안되어 있으면 설치
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" # enter this line if uv is not installed
+uv python list
+uv python install 3.10.15
 uv init --python=3.10.15
 uv sync
 ```
 
-### One Click Execution - Execute python file main.py with default setting (Assume text is mainly in korean, use sentence transformer vectorizer).
-Please execute 
+### Data Preparation
+./data/corpus.txt --> Text data that needs to be chunked. Fill the file contents with whatever you want.
+./data/chunked_corpus.txt --> Chunking result of "./data/corpus.txt". 
+
+### One Click Execution - Execute python file main.py with default setting (Assume text is mainly in korean).
+execute batch file in command prompt
 ```
 chunking.bat
 ```
-in command prompt (python 3.10 environment).
+
 
 ### User Customized Command
 You can choose splitter depend on text language and can adjust threshold for clustering strength.
