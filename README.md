@@ -50,18 +50,18 @@ uv sync
 ./data/corpus.txt --> Text data that needs to be chunked. Fill the file contents with whatever you want.
 ./data/chunked_corpus.txt --> Chunking result of "./data/corpus.txt". 
 
-### One Click Execution - Execute python file main.py with default setting (Assume text is mainly in korean).
-execute batch file in command prompt
+### One Click Execution
+- Execute python file main.py with default configurations (Assume text is mainly in korean).
+
+execute batch file `chunking.bat` by clicking it or enter command like below:
 ```
 chunking.bat
 ```
-
-
 ### User Customized Command
 You can choose splitter depend on text language and can adjust threshold for clustering strength.
-Please enter command 
+Enter command like below:
 ```
 python main.py --splitter_name [SPLITTER NAME] --threshold [THRESHOLD]
-# [SPLITTER NAME]: 'spacy_senter'' is for english, 'kss' is for korean. 
-# [THRESHOLD]: Choose similarity threshold for adjacent sentences clustering. value is between 0~1. Higher threshold lead more scattered clusters.
 ```
+- `[SPLITTER NAME]`: `'spacy_senter'`' is for english, `'kss'` is for korean. 
+- `[THRESHOLD]`: Choose similarity threshold for adjacent sentences clustering. value is between 0~1. Higher threshold lead more scattered clusters.
